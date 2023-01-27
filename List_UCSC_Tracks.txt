@@ -1,25 +1,18 @@
 UCSC Tracks for Payseur Lab
 
-1. SNPs and Indels for 14 Gough genomes of unrelated individuals
-http://payseurweb.genetics.wisc.edu/Gough14Variants/hub.txt
-2. Filtered SNPs for 14 Gough genomes
-http://payseurweb.genetics.wisc.edu/Gough14SNPs/hub.txt
-3. Fixed differences between Gough parental line #2 and WSB
-http://payseurweb.genetics.wisc.edu/FixedDiffGoughLine2WSB/hub.txt
-4. Fixed differences between Gough parental line #6 and WSB
-http://payseurweb.genetics.wisc.edu/FixedDiffGoughLine6WSB/hub.txt
-5. SNPs and Indels for 8 Germany genomes
-http://payseurweb.genetics.wisc.edu/Germany8Variants/hub.txt
-6. SNPs for Gough14 and Germany8 with allele frequency difference greater than 0.5
-http://144.92.162.89/GoughVSGermanyGreaterThanPoint5/hub.txt
-7. SNPs with derived (Spretus) allele frequency 0.5 higher in Gough14 than in Germany8
-http://payseurweb.genetics.wisc.edu/GoughDerivedMinusGermanyDerivedGreaterThanPoint5/hub.txt
-8. SNPs in QTL Differentially expressed Genes
-http://payseurweb.genetics.wisc.edu/QTLDEgenes/hub.txt
-9. Gough – Germany >= 0.5
-http://144.92.162.89/GoughFreqPoint5HigherThanGermany/hub.txt
-10. Germany – Gough >= 0.5
-http://144.92.162.89/GermanyFreqPoint5HigherThanGough/hub.txt
-11. Fixed Indels between Gough Line #2 and WSB
-http://payseurweb.genetics.wisc.edu/FixedIndelsLine2WSB/hub.txt
-
+1. SNPs and Indels for 14 Gough genomes of unrelated individuals, http://payseurweb.genetics.wisc.edu/Gough14Variants/hub.txt
+2. Filtered SNPs for 14 Gough genomes, http://payseurweb.genetics.wisc.edu/Gough14SNPs/hub.txt
+3. Fixed differences between Gough parental line #2 and WSB, http://payseurweb.genetics.wisc.edu/FixedDiffGoughLine2WSB/hub.txt
+4. Fixed differences between Gough parental line #6 and WSB, http://payseurweb.genetics.wisc.edu/FixedDiffGoughLine6WSB/hub.txt
+5. SNPs and Indels for 8 Germany genomes, http://payseurweb.genetics.wisc.edu/Germany8Variants/hub.txt
+6. SNPs for Gough14 and Germany8 with allele frequency difference greater than 0.5, http://144.92.162.89/GoughVSGermanyGreaterThanPoint5/hub.txt
+7. SNPs with derived (Spretus) allele frequency 0.5 higher in Gough14 than in Germany8, http://payseurweb.genetics.wisc.edu/GoughDerivedMinusGermanyDerivedGreaterThanPoint5/hub.txt
+8. SNPs in QTL Differentially expressed Genes, http://payseurweb.genetics.wisc.edu/QTLDEgenes/hub.txt
+9. Gough â€“ Germany >= 0.5, http://144.92.162.89/GoughFreqPoint5HigherThanGermany/hub.txt
+10. Germany â€“ Gough >= 0.5, http://144.92.162.89/GermanyFreqPoint5HigherThanGough/hub.txt
+11. Fixed Indels between Gough Line #2 and WSB, http://payseurweb.genetics.wisc.edu/FixedIndelsLine2WSB/hub.txt
+12. Gough DE genes embryonic liver, http://payseurweb.genetics.wisc.edu/GoughDEEmbryonicLiver/hub.txt
+13. Gough DE genes week 2 liver, http://payseurweb.genetics.wisc.edu/GoughDEWeek2Liver/hub.txt
+14. Gough DE genes week 4 liver, http://payseurweb.genetics.wisc.edu/GoughDEWeek4Liver/hub.txt
+15. Gough DE genes week 4 adipose, http://payseurweb.genetics.wisc.edu/GoughDEWeek4Adipose/hub.txt
+16. Gough DE genes week 4 hypothalamus, http://payseurweb.genetics.wisc.edu/GoughDEWeek4Hypothalamus/hub.txt
