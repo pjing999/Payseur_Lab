@@ -1,7 +1,8 @@
 To use Variant Annotation Integrator for multiple regions / own UCSC tracks:
-1. Create a UCSC track for your genomic SNP dataset (e.g. Gough and Germany genomes). 
-2. Load your own track.
-3. Go to Table Browser, select your own track for option 'group';  upload your regions of interest (e.g. All Gough QTLs bed file) under option 'Defined region of interest'; all fields from selected table (default) for output format; give a file name with vcf extension. And you'll get the vcf file for the regions of your interest for your own data.
-4. Go to VAI, click on 'add custom track' under 'Select Variants'; upload the vcf file created in Step #3. And you'll get the mutation types for SNPs in defined regions.
-5. To figure out which genomes carry which alleles for all missense mutations (e.g. Gough or Germany, this information got lost in Step #4), you'll need to check the allele information for your genomes with the vcf file generated in step #3.
+  1. Create a UCSC track for your genomic SNP dataset (e.g. Gough and Germany genomes). 
+  2. Load your own track.
+  3. Go to Table Browser, select your own track for option 'group';  upload your regions of interest (e.g. All Gough QTLs bed file) under option 'Defined region of   interest'; all fields from selected table (default) for output format; give a file name with vcf extension. And you'll get the vcf file for the regions of your interest for your own data.
+  4. Go to VAI, click on 'add custom track' under 'Select Variants'; upload the vcf file created in Step #3. And you'll get the mutation types for SNPs in defined regions.
+  5. To figure out which genomes carry which alleles for all missense mutations (e.g. Gough or Germany, this information got lost in Step #4), you'll need to check the allele information for your genomes with the vcf file generated in step #3.
+
 Note: You can use VAI web interface directly if you only have one region. VAI limit is 100,000 variants
