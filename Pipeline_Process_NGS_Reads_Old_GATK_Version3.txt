@@ -11,24 +11,22 @@ samtools merge merged.bam sorted1.bam sorted2.bam &
 java -Xmx20g -jar ../../picard/build/libs/picard.jar MarkDuplicates INPUT=F1B.sorted.bam OUTPUT=F1B.sorted.nodup.bam METRICS_FILE=F1B.sorted.duplicate.metrics REMOVE_DUPLICATES=true ASSUME_SORTED=true TMP_DIR=tmp MAX_RECORDS_IN_RAM=500000 VALIDATION_STRINGENCY=LENIENT
 
 3. Indel Realignment
-a. java -Xmx40g -d64 -jar ../../bamfiles/GenomeAnalysisTK.jar -T RealignerTargetCreator -nt 4 -I B2C.sorted.nodup.bam -R ../../bamfiles/mm10.fa -o B2C.suspicious.indel.intervals.list
-b. java -Xmx40g -d64 -Djava.io.tmpdir=B2C.tmp -jar ../../bamfiles/GenomeAnalysisTK.jar -T IndelRealigner -I B2C.sorted.nodup.bam -R ../../bamfiles/mm10.fa -targetIntervals B2C.suspicious.indel.intervals.list -o B2C.sorted.nodup.realigned.bam -compress 0 --maxReadsInMemory 1000000
+   a. java -Xmx40g -d64 -jar ../../bamfiles/GenomeAnalysisTK.jar -T RealignerTargetCreator -nt 4 -I B2C.sorted.nodup.bam -R ../../bamfiles/mm10.fa -o B2C.suspicious.indel.intervals.list
+   b. java -Xmx40g -d64 -Djava.io.tmpdir=B2C.tmp -jar ../../bamfiles/GenomeAnalysisTK.jar -T IndelRealigner -I B2C.sorted.nodup.bam -R ../../bamfiles/mm10.fa -targetIntervals B2C.suspicious.indel.intervals.list -o B2C.sorted.nodup.realigned.bam -compress 0 --maxReadsInMemory 1000000
 
 4. Base Recalibration
 We didn't do this step for island populations.
 
 5. Choose One of 5a, 5b or 5c.
-5a. GATK HaplotypeCaller
+   5a. GATK HaplotypeCaller
 java -Xmx80g -d64 -jar ../../bamfiles/GenomeAnalysisTK.jar -T HaplotypeCaller -nct 16 -R ../../bamfiles/mm10.fa -I B2C.sorted.nodup.realigned.bam -I C1.sorted.nodup.realigned.bam -I E1B.sorted.nodup.realigned.bam -I F1B.sorted.nodup.realigned.bam -I 15B.sorted.nodup.realigned.bam -I 18B.sorted.nodup.realigned.bam -I 14.sorted.nodup.realigned.bam -I 16B.sorted.nodup.realigned.bam --genotyping_mode DISCOVERY --output_mode EMIT_VARIANTS_ONLY -stand_call_conf 30 -o france8_gatk_haplotypecaller.vcf
-
-5b. Samtools / Bcftools
+   5b. Samtools / Bcftools
 samtools mpileup -ugf mm10.fa B2C.sorted.nodup.realigned.bam C1.sorted.nodup.realigned.bam E1B.sorted.nodup.realigned.bam F1B.sorted.nodup.realigned.bam 15B.sorted.nodup.realigned.bam 18B.sorted.nodup.realigned.bam 14.sorted.nodup.realigned.bam 16B.sorted.nodup.realigned.bam | bcftools call -vmO z -o france8_samtools.vcf.gz
-
-5c. GATK GVCF:
+   5c. GATK GVCF:
 java -Xmx5g -d64 -jar /path_to_GATK/GenomeAnalysisTK.jar -T HaplotypeCaller  -nct 4 -R /path_to_reference/mm10.fa -I /path_to_chr/F1B.bam --max_alternate_alleles 2 --emitRefConfidence GVCF --variant_index_type LINEAR --variant_index_parameter 128000 -o /path_to_gvcf/F1B.vcf
-    GVCF Joint Genotyping:
+       GVCF Joint Genotyping:
 java -Xmx40g -d64 -jar /path_to_GATK/GenomeAnalysisTK.jar -T GenotypeGVCFs -R /path_to_reference/mm10.fa --variant F1B.vcf --variant 14.vcf  ... -o MouseGenomes.all.vcf
 
 6. SNP Filtering - GATK Recommended Hard Filter
-a. /mnt/sas0/AD/jing/software/gatk-4.2.3.0/gatk VariantFiltration -V snps_FNo8.recode.vcf.gz -filter "QD < 2.0" --filter-name "QD2" -filter "QUAL < 30.0" --filter-name "QUAL30" -filter "SOR > 3.0" --filter-name "SOR3" -filter "FS > 60.0" --filter-name "FS60" -filter "MQ < 40.0" --filter-name "MQ40" -filter "MQRankSum < -12.5" --filter-name "MQRankSum-12.5" -filter "ReadPosRankSum < -8.0" --filter-name "ReadPosRankSum-8" -O snps_FNo8_filtered.vcf.gz &
-b. bcftools view (--exclude-types indels) -f PASS snps_FNo8_filtered.vcf.gz > snps_FNo8_filtered_passed.vcf &
+   a. /mnt/sas0/AD/jing/software/gatk-4.2.3.0/gatk VariantFiltration -V snps_FNo8.recode.vcf.gz -filter "QD < 2.0" --filter-name "QD2" -filter "QUAL < 30.0" --filter-name "QUAL30" -filter "SOR > 3.0" --filter-name "SOR3" -filter "FS > 60.0" --filter-name "FS60" -filter "MQ < 40.0" --filter-name "MQ40" -filter "MQRankSum < -12.5" --filter-name "MQRankSum-12.5" -filter "ReadPosRankSum < -8.0" --filter-name "ReadPosRankSum-8" -O snps_FNo8_filtered.vcf.gz &
+   b. bcftools view (--exclude-types indels) -f PASS snps_FNo8_filtered.vcf.gz > snps_FNo8_filtered_passed.vcf &
