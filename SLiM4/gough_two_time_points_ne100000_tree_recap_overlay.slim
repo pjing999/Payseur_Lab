@@ -26,18 +26,31 @@ initialize() {
 1 late() {
 		p1.outputSample(200);
 		g000 = p1.sampleIndividuals(100).genomes;
-		g000.outputVCF("output_gough_two_time_points_ne100000_tmp000_rep" + simID + ".vcf");
+		g000.outputVCF("output_gough_two_time_points_ne100000_gen000_rep" + simID + ".vcf");
 	}
+
+25 late() {
+		p1.outputSample(200);
+		g025 = p1.sampleIndividuals(100).genomes;
+		g025.outputVCF("output_gough_two_time_points_ne100000_gen025_rep" + simID + ".vcf");
+	}
+
 50 late() {
 		p1.outputSample(200);
 		g050 = p1.sampleIndividuals(100).genomes;
-		g050.outputVCF("output_gough_two_time_points_ne100000_tmp050_rep" + simID + ".vcf");
+		g050.outputVCF("output_gough_two_time_points_ne100000_gen050_rep" + simID + ".vcf");
+	}
+
+75 late() {
+		p1.outputSample(200);
+		g075 = p1.sampleIndividuals(100).genomes;
+		g075.outputVCF("output_gough_two_time_points_ne100000_gen075_rep" + simID + ".vcf");
 	}
 
 100 late() {
 		p1.outputSample(200);
 		g100 = p1.sampleIndividuals(100).genomes;
-                g100.outputVCF("output_gough_two_time_points_ne100000_tmp100_rep" + simID + ".vcf");
+                g100.outputVCF("output_gough_two_time_points_ne100000_gen100_rep" + simID + ".vcf");
 	}
 
 100 late() {
