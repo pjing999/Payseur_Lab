@@ -10,7 +10,7 @@ samtools merge merged.bam sorted1.bam sorted2.bam &
 2. Mark Duplicates
 java -Xmx20g -jar ../../picard/build/libs/picard.jar MarkDuplicates INPUT=F1B.sorted.bam OUTPUT=F1B.sorted.nodup.bam METRICS_FILE=F1B.sorted.duplicate.metrics REMOVE_DUPLICATES=true ASSUME_SORTED=true TMP_DIR=tmp MAX_RECORDS_IN_RAM=500000 VALIDATION_STRINGENCY=LENIENT
 
-3. Indel Realignment
+3. Indel Realignment (For GATK Version #3, not needed for Version #4)
    a. java -Xmx40g -d64 -jar ../../bamfiles/GenomeAnalysisTK.jar -T RealignerTargetCreator -nt 4 -I B2C.sorted.nodup.bam -R ../../bamfiles/mm10.fa -o B2C.suspicious.indel.intervals.list
    b. java -Xmx40g -d64 -Djava.io.tmpdir=B2C.tmp -jar ../../bamfiles/GenomeAnalysisTK.jar -T IndelRealigner -I B2C.sorted.nodup.bam -R ../../bamfiles/mm10.fa -targetIntervals B2C.suspicious.indel.intervals.list -o B2C.sorted.nodup.realigned.bam -compress 0 --maxReadsInMemory 1000000
 
